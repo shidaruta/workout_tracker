@@ -1,0 +1,24 @@
+<h2>Workout on <%= @workout_session.date %></h2>
+
+<% if @workout_session.workout_entries.empty? %>
+  <p>No entries logged for this session yet.</p>
+<% else %>
+  <% @workout_session.workout_entries.each do |entry| %>
+    <p>
+      <%= entry.exercise.name %>: <%= entry.sets %> × <%= entry.reps %> -- <%= entry.weight %> kg
+    </p>
+  <% end %>
+<% end %>
+
+<h3>Add a new entry:</h3>
+<%= render 'workout_entries/form', 
+          workout_session: @workout_session, 
+          workout_entry: @workout_session.workout_entries.new, 
+          exercises: Exercise.all %>
+<%= link_to "Back", workout_sessions_path, class: "btn btn-secondary" %>
+<%# <%= link_to "Edit Workout Session", edit_workout_session_path(@workout_session), class: "btn btn-primary" %>
+<%= link_to "Delete Workout Session", @workout_session, method: :delete, 
+           data: { confirm: "Are you sure you want to delete this workout session?" },
+           class: "btn btn-danger" %>
+<%= link_to "Home", workout_sessions_path, class: "btn btn-secondary" %>
+<%= link_to "Create New Workout Session", new_workout_session_path, class: "btn btn-primary" %>

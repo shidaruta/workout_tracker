@@ -1,0 +1,26 @@
+<%# <h1>Log Exercise for <%= @workout_session.date</h1> %>
+<h2>Add Exercise Entry</h2>
+
+<%= form_with model: [workout_session, workout_entry] do |form| %>
+  <div>
+    <%= form.label :exercise_id, "Exercise" %>
+    <%= form.collection_select :exercise_id, exercises, :id, :name %>
+  </div>
+
+  <div>
+    <%= form.label :sets %>
+    <%= form.number_field :sets %>
+  </div>
+
+  <div>
+    <%= form.label :reps %>
+    <%= form.number_field :reps %>
+  </div>
+
+  <div>
+    <%= form.label :weight %>
+    <%= form.number_field :weight %>
+  </div>
+
+  <%= form.submit 'Add Entry'%>
+<% end %>

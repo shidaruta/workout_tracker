@@ -1,0 +1,10 @@
+<h1>New Workout Session </h1>
+<%= form_with model: @workout_session do |form| %>
+   <div>
+     <%= form.label :date %>
+     <%= form.date_field :date %>
+   </div>
+   <div>
+     <%= form.submit "Create Workout Session" %>
+   </div>
+<% end %>

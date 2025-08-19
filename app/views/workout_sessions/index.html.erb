@@ -1,0 +1,12 @@
+<h1>All Workout Sessions</h1>
+
+<%= link_to "➕ Create New Workout Session", new_workout_session_path, class: "btn btn-primary" %>
+
+ <ul>
+   <% (@workout_sessions || []).each do |session| %>
+     <li>
+       <%= link_to session.date, workout_session_path(session) %>
+       <%= link_to "Enter Record", workout_session_path(session), class: "btn" %>
+     </li>
+   <% end %>
+ </ul>
